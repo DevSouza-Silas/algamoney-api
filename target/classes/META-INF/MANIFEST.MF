@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: silas
+Build-Jdk: 16.0.2
+Implementation-Title: algamoney-api
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: com.algaworks.algamoney-api
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/algamoney-api/
+Created-By: Maven Integration for Eclipse
+
