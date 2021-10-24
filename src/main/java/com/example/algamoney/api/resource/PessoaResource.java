@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,10 +62,24 @@ public class PessoaResource {
 	public void remover(@PathVariable Long codigo) {
 	this.pessoaRepository.delete(codigo);
 	}        
-	/*
+	
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
-		Pessoa pessoaSalva = pessoaSalva.atualizar(codigo, pessoa);
+		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+		if (pessoaSalva == null) {
+			throw new EmptyResultDataAccessException(1); 
+		}
+		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");//Essa String codigo, significa que a propriedade codigo será ignorado na ataulização   
+		pessoaRepository.save(pessoaSalva);
 		return ResponseEntity.ok(pessoaSalva);
-	}*/
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -15,7 +15,9 @@ public class PessoaService {
 	private PessoaRepository pessoaRepository;
 
 	public Pessoa atualizar(Long codigo, Pessoa pessoa) {
+		
 		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+		
 		if (pessoaSalva == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
